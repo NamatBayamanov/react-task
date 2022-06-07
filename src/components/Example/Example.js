@@ -48,7 +48,7 @@ function Example() {
 
 
         <ul className={classes.list}>
-          {items.map(item =>  <><li>{item}</li><button style={styles} >-</button> </>)}
+          {items.map(item =>  <><li>{item}</li><button style={styles} >-</button></>)}
 
         </ul>
       </div>
