@@ -25,14 +25,14 @@ function Example() {
 
 
 
-  function deleteElement(event) {
-    setItems(
-        items.map(item => {
-          {}
-        }
-      )
-    );
-  };
+  // function deleteElement(event) {
+  //   setItems(
+  //       items.map(item => {
+  //         {}
+  //       }
+  //     )
+  //   );
+  // };
 
   return ( 
 
@@ -48,7 +48,7 @@ function Example() {
 
 
         <ul className={classes.list}>
-          {items.map(item =>  <><li>{item}</li><button style={styles} onClick={deleteElement}>-</button> </>)}
+          {items.map(item =>  <><li>{item}</li><button style={styles} >-</button> </>)}
 
         </ul>
       </div>
