@@ -1,6 +1,5 @@
 import Example from "./components/Example/Example";
-import ComponentList from "./components/Example2/Example2";
-import Example2 from "./components/Example2/Example2";
+// import Example2 from "./components/Example2/Example2";
 
 function App() {
   return (
