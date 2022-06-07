@@ -1,0 +1,16 @@
+.Example {
+  padding: 1rem;
+}
+
+.Example {
+  & .list {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.Example {
+  & .btn {
+    display: inline;
+  }
+}
