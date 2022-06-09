@@ -1,16 +1,19 @@
 import { getCurs } from "../data/data";
+import classes from "./ExchangeRate.module.scss";
 
-function ExchangeRate({ from, to }) {
 
-  const rate = getCurs(from + to);
+function ExchangeRate({ from, to, rate}) {
+
 
   return (
     <>
-      <div className="ExachangeRate">
-        <div>
-          {from}/{to} = {rate};
-        </div>
-        
+      <div className={classes.ExchangeRate}>
+        <h4>
+        {from} / {to}
+        </h4>
+        <h2>
+          {rate.toFixed(2)}
+        </h2>
       </div>
     </>
   );
