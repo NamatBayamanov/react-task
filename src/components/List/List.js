@@ -1,46 +1,59 @@
 import { useEffect, useState } from "react";
+import ToDoss from "./ToDoss/ToDoss";
+import ToDossform from "./ToDossform/ToDossform";
 
 function List() {
-  const [Arrays, setArrays] = useState([]);
 
-  const [Arrayss, setArrayss] = useState({ count: 0, count2: 2 });
+  const [todoss, setTodoss] = useState([]);
+
+  const addTask = (userInput) => {
+    if(userInput) {
+      const newItem = {
+        id: Math.random().toString(36).substr(2,9),
+        task: userInput,
+        complete: false,
+      }
+
+      setTodoss([...todoss, newItem]);
+    }
+  }
+  
+
+
+  const onRemove = (id) => {
+    setTodoss([...todoss.filter((currentValue, index, arr) => { 
+        return(
+          currentValue.id !== id
+        );
+      })]);
+  }
+
+  console.log([...todoss])
 
   
 
-  function addLI(params) {
-    setArrayss((prev) => ({ ...prev, count: Arrayss.count + 1 }));
+  const onToggle = (id) => {
+    setTodoss(
+      [...todoss.map((currentValue, index, arr) => {
+        return (
+          currentValue.id === id ? {...currentValue, complete: !currentValue.complete} : {...currentValue}
+        );
+      })]
+    );
   }
-
-  useEffect(() => {
-    setArrays([...Arrays]);
-  }, [Arrayss]); 
-
-  function addLI2(params) {
-    setArrayss({ ...Arrayss, count2: Arrayss.count2 + 2 });
-  }
-  const output = () => {
-    {Arrays.map(arr => {
-      <li>{arr}</li>
-    })}
-  }
-
-  console.log(Arrays);
+  
+  
   return (
     <>
-      <div>
-        <input type="text" value="" onChange="" />
-        <button onClick={addLI}>+</button>
-        <button onClick={addLI2}>++</button>
-      </div>
-
-      <ul>
-        <div>{Arrayss.count}</div>
-
-        <h2>{Arrayss.count2}</h2>
-
-        <ul>Total click: {output} </ul>
-      </ul>
+      <h2>List of Tasks: {todoss.length}</h2>
+      <ToDossform addTask={addTask}/>
+      {todoss.map((currentValue, index, arr) => {
+        return (
+          <ToDoss currentValue={currentValue} key={currentValue.id} toggle={onToggle} onRemove={onRemove} />
+        );
+      })}
     </>
+
   );
 }
 

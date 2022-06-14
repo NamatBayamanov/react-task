@@ -12,7 +12,10 @@ function UseEffects() {
   // Аналогично componentDidMount и componentDidUpdate:
   useEffect(() => {
     // Обновляем заголовок документа с помощью API браузера
-    document.title = `Вы нажали ${count} раз]`;
+    document.title = `Вы нажали ${count + 1} раз]`;
+    // setInterval(() => {
+    //   setCount();
+    // }, 10000);
   }, []);
 
   return (
